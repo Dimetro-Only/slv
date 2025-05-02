@@ -1,0 +1,7 @@
+local_test
+dist/*
+.DS_Store
+slv-dev
+.vscode
+internal/k8s/bin/*
+.ignore/*

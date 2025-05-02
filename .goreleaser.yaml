@@ -1,0 +1,221 @@
+version: 2
+
+project_name: slv
+
+env:
+  - GO111MODULE=on
+  - CGO_ENABLED=1
+
+builds:
+
+# Builds for App
+  - id: slv
+    binary: slv
+    main: ./internal/app
+    targets:
+      - darwin_amd64
+      - darwin_arm64
+      - linux_amd64
+      - linux_arm64
+      - linux_arm
+      - windows_amd64
+      - windows_arm64
+    env:
+      - CGO_ENABLED=0
+    flags: "-mod=readonly"
+    ldflags:
+      - -X slv.sh/slv/internal/core/config.version={{.Version}}
+      - -X slv.sh/slv/internal/core/config.commitDate={{.CommitDate}}
+      - -X slv.sh/slv/internal/core/config.fullCommit={{.FullCommit}}
+      - -X slv.sh/slv/internal/core/config.releaseURL={{.ReleaseURL}}
+
+# Builds for Shared Library
+  - id: slv-shared-lib-darwin-amd64
+    binary: slv
+    main: ./internal/sharedlib
+    buildmode: c-shared
+    goos:
+      - darwin
+    goarch:
+      - amd64
+    env:
+      - CC=o64-clang
+      - CXX=o64-clang++
+    flags: "-mod=readonly"
+    ldflags:
+      - -X slv.sh/slv/internal/core/config.version={{.Version}}
+      - -X slv.sh/slv/internal/core/config.commitDate={{.CommitDate}}
+      - -X slv.sh/slv/internal/core/config.fullCommit={{.FullCommit}}
+      - -X slv.sh/slv/internal/core/config.releaseURL={{.ReleaseURL}}
+
+  - id: slv-shared-lib-darwin-arm64
+    binary: slv
+    main: ./internal/sharedlib
+    buildmode: c-shared
+    goos:
+      - darwin
+    goarch:
+      - arm64
+    env:
+      - CC=oa64-clang
+      - CXX=oa64-clang++
+    flags: "-mod=readonly"
+    ldflags:
+      - -X slv.sh/slv/internal/core/config.version={{.Version}}
+      - -X slv.sh/slv/internal/core/config.commitDate={{.CommitDate}}
+      - -X slv.sh/slv/internal/core/config.fullCommit={{.FullCommit}}
+      - -X slv.sh/slv/internal/core/config.releaseURL={{.ReleaseURL}}
+
+  - id: slv-shared-lib-windows-amd64
+    binary: slv
+    main: ./internal/sharedlib
+    buildmode: c-shared
+    goos:
+      - windows
+    goarch:
+      - amd64
+    env:
+      - CC=x86_64-w64-mingw32-gcc
+      - CXX=x86_64-w64-mingw32-g++
+    flags: "-mod=readonly"
+    ldflags:
+      - -X slv.sh/slv/internal/core/config.version={{.Version}}
+      - -X slv.sh/slv/internal/core/config.commitDate={{.CommitDate}}
+      - -X slv.sh/slv/internal/core/config.fullCommit={{.FullCommit}}
+      - -X slv.sh/slv/internal/core/config.releaseURL={{.ReleaseURL}}
+
+  - id: slv-shared-lib-windows-arm64
+    binary: slv
+    main: ./internal/sharedlib
+    buildmode: c-shared
+    goos:
+      - windows
+    goarch:
+      - arm64
+    env:
+      - CC=/llvm-mingw/bin/aarch64-w64-mingw32-gcc
+      - CXX=/llvm-mingw/bin/aarch64-w64-mingw32-g++
+    flags: "-mod=readonly"
+    ldflags:
+      - -X slv.sh/slv/internal/core/config.version={{.Version}}
+      - -X slv.sh/slv/internal/core/config.commitDate={{.CommitDate}}
+      - -X slv.sh/slv/internal/core/config.fullCommit={{.FullCommit}}
+      - -X slv.sh/slv/internal/core/config.releaseURL={{.ReleaseURL}}
+
+  - id: slv-shared-lib-linux-amd64
+    binary: slv
+    main: ./internal/sharedlib
+    buildmode: c-shared
+    goos:
+      - linux
+    goarch:
+      - amd64
+    env:
+      - CC=x86_64-linux-gnu-gcc
+      - CXX=x86_64-linux-gnu-g++
+    flags: "-mod=readonly"
+    ldflags:
+      - -X slv.sh/slv/internal/core/config.version={{.Version}}
+      - -X slv.sh/slv/internal/core/config.commitDate={{.CommitDate}}
+      - -X slv.sh/slv/internal/core/config.fullCommit={{.FullCommit}}
+      - -X slv.sh/slv/internal/core/config.releaseURL={{.ReleaseURL}}
+      - -extldflags "-lc -lrt -lpthread"
+
+  - id: slv-shared-lib-linux-arm64
+    binary: slv
+    main: ./internal/sharedlib
+    buildmode: c-shared
+    goos:
+      - linux
+    goarch:
+      - arm64
+    env:
+      - CC=aarch64-linux-gnu-gcc
+      - CXX=aarch64-linux-gnu-g++
+    flags: "-mod=readonly"
+    ldflags:
+      - -X slv.sh/slv/internal/core/config.version={{.Version}}
+      - -X slv.sh/slv/internal/core/config.commitDate={{.CommitDate}}
+      - -X slv.sh/slv/internal/core/config.fullCommit={{.FullCommit}}
+      - -X slv.sh/slv/internal/core/config.releaseURL={{.ReleaseURL}}
+      - -extldflags "-lc -lrt -lpthread"
+
+  - id: slv-shared-lib-linux-armv7
+    binary: slv
+    main: ./internal/sharedlib
+    buildmode: c-shared
+    goos:
+      - linux
+    goarch:
+      - arm
+    goarm:
+      - "7"
+    env:
+      - CC=arm-linux-gnueabihf-gcc
+      - CXX=arm-linux-gnueabihf-g++
+    flags: "-mod=readonly"
+    ldflags:
+      - -X slv.sh/slv/internal/core/config.version={{.Version}}
+      - -X slv.sh/slv/internal/core/config.commitDate={{.CommitDate}}
+      - -X slv.sh/slv/internal/core/config.fullCommit={{.FullCommit}}
+      - -X slv.sh/slv/internal/core/config.releaseURL={{.ReleaseURL}}
+      - -extldflags "-lc -lrt -lpthread"
+
+archives:
+  - id: slv
+    name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}"
+    formats: [ 'zip' ]
+    ids:
+      - slv
+  - id: slv-shared-lib
+    name_template: "{{ .ProjectName }}-shared-lib_{{ .Os }}_{{ .Arch }}"
+    formats: [ 'zip' ]
+    ids:
+      - slv-shared-lib-darwin-amd64
+      - slv-shared-lib-darwin-arm64
+      - slv-shared-lib-windows-amd64
+      - slv-shared-lib-windows-arm64
+      - slv-shared-lib-linux-amd64
+      - slv-shared-lib-linux-arm64
+      - slv-shared-lib-linux-armv7
+
+checksum:
+  name_template: "{{ .ProjectName }}_checksums.txt"
+
+snapshot:
+  version_template: "{{ incpatch .Version }}-dev"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+
+nfpms:
+  - ids:
+      - slv
+    file_name_template: '{{ .PackageName }}_{{ .Os }}_{{ .Arch }}{{ with .Arm }}v{{ . }}{{ end }}{{ with .Mips }}_{{ . }}{{ end }}{{ if not (eq .Amd64 "v1") }}{{ .Amd64 }}{{ end }}'
+    vendor: SLV
+    homepage: https://slv.sh
+    maintainer: Shibly Meeran <shibme@shib.me>
+    formats:
+      - apk
+      - deb
+      - rpm
+
+brews:
+  - ids:
+      - slv
+    name: slv
+    homepage: https://slv.sh
+    commit_author:
+      name: Shibly Meeran
+      email: shibme@shib.me
+    repository:
+      owner: amagioss
+      name: homebrew-slv
+      branch: main
+      git:
+        url: 'git@github.com:amagioss/homebrew-slv.git'
+        private_key: '{{ .Env.HOMEBREW_SSH_KEY }}'
